@@ -3,5 +3,6 @@
 ### [最简单的Handler、Looper、Message使用指南一](https://blog.csdn.net/wangzhibo666/article/details/86516422)
 ![handler_demo_img](https://img-blog.csdnimg.cn/20190116233034122.gif)
 
+喜欢就给个star吧，方便下次查找，博主会不定期更新Android知识点代码，和大家共同进步:-D
 
 博客地址:https://blog.csdn.net/wangzhibo666
