@@ -10,6 +10,8 @@
     <TextView
         android:id="@+id/tv_receiver"
         android:text="子线程传递过来的参数"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

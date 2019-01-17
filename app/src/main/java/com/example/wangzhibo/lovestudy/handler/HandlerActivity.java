@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import com.example.wangzhibo.lovestudy.R;
 
+/**
+ *   最简单的Handler、Looper、Message使用指南一(附github源码) 文章的代码示例
+ *   https://blog.csdn.net/wangzhibo666/article/details/86516422
+ *   create by wangzhibo666
+ */
 public class HandlerActivity extends Activity {
     private static final int WHAT_MODIFY_TV = 100;
     TextView tvReciver;
