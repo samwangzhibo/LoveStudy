@@ -21,4 +21,16 @@
         android:text="点击连接service"
         />
 
+    <Button
+        android:id="@+id/btn_commute_with_remote_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击连接跨进程service"
+        />
+    <Button
+        android:id="@+id/btn_commute_with_remote_service_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击连接跨进程service(服务器自动吐数据)"
+        />
 </LinearLayout>

@@ -36,36 +36,4 @@ public class MathService extends Service {
     public void release() {
         thread.setEnd(true);
     }
-
-    class SendThread extends Thread {
-        int num = 0;
-        boolean isEnd = false;
-        private final int DURATION_SLEEP = 1000;
-
-        /**
-         * 关闭线程
-         * @param end
-         */
-        void setEnd(boolean end) {
-            isEnd = end;
-        }
-
-        public int getNum(){
-            return num;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            while (!isEnd) {
-                num++;
-                try {
-                    //不释放资源 休眠
-                    Thread.sleep(DURATION_SLEEP);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }
