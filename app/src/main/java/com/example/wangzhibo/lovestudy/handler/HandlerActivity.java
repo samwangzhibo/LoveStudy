@@ -42,6 +42,11 @@ public class HandlerActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //退出时候切记 关闭线程 回收资源 !!!!
