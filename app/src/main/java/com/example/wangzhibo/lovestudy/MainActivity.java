@@ -26,9 +26,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     IRemoteService iRemoteService;
     ServiceConnection remoteServiceConnection;
     Button commuteWithRemoteServiceBtn;
+    IServiceCallback callback;
 
     Button commuteWithRemoteServiceBtn2;
-    IServiceCallback callback;
+    ServiceConnection remoteServiceConnection2;
+    IServiceCallback callback2;
+    IRemoteService iRemoteService2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,45 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         remoteServiceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                Log.e(TAG, Thread.currentThread().getName());
                 iRemoteService = IRemoteService.Stub.asInterface(service);
+//                try {
+//                    iRemoteService.registerListener(callback);
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+//                try {
+//                    iRemoteService.unRegisterListener(callback);
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+                iRemoteService = null;
+            }
+        };
+
+        callback = new IServiceCallback.Stub() {
+            @Override
+            public void notifyNum(final int num) throws RemoteException {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commuteWithRemoteServiceBtn.setText("获取service数据 : " + num);
+                    }
+                });
+            }
+        };
+    }
+
+    private void initRemoteServiceConnection2() {
+        remoteServiceConnection2 = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                iRemoteService2 = IRemoteService.Stub.asInterface(service);
                 try {
-                    iRemoteService.registerListener(callback);
+                    iRemoteService2.registerListener(callback2);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -61,15 +99,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 try {
-                    iRemoteService.unRegisterListener(callback);
+                    iRemoteService2.unRegisterListener(callback2);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                iRemoteService = null;
+                iRemoteService2 = null;
             }
         };
 
-        callback = new IServiceCallback.Stub() {
+        callback2 = new IServiceCallback.Stub() {
 
             @Override
             public void notifyNum(final int num) throws RemoteException {
@@ -131,11 +169,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 }
                 break;
             case R.id.btn_commute_with_remote_service_2:
-                if (iRemoteService == null) {
+                if (iRemoteService2 == null) {
                     //开启service
-                    initRemoteServiceConnection();
+                    initRemoteServiceConnection2();
                     Intent intent = new Intent(MainActivity.this, RemoteService.class);
-                    bindService(intent, remoteServiceConnection, BIND_AUTO_CREATE);
+                    bindService(intent, remoteServiceConnection2, BIND_AUTO_CREATE);
                     commuteWithRemoteServiceBtn2.setText("连接成功，点击获取跨进程service数据");
                 }
                 break;
@@ -150,6 +188,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         }
         if (serviceConnection != null) {
             unbindService(serviceConnection);
+        }
+        if (remoteServiceConnection2 != null) {
+            unbindService(remoteServiceConnection2);
         }
         if (mathService != null){
             mathService.release();

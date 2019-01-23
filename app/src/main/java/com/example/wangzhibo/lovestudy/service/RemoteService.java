@@ -3,32 +3,46 @@ package com.example.wangzhibo.lovestudy.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 public class RemoteService extends Service {
+    private static final String TAG = "RemoteService";
     SendThread thread;
-    private RemoteCallbackList<IServiceCallback> mRemoteCallbackList = new RemoteCallbackList<>();
+//    private RemoteCallbackList<IServiceCallback> mRemoteCallbackList = new RemoteCallbackList<>();
     IServiceCallback iServicecallBack;
+    ArrayList<IServiceCallback> iServicecallBacks = new ArrayList<>();
     public RemoteService() {
     }
 
     @Override
     public void onCreate() {
+        Log.e(TAG, "onCreate");
         thread = new SendThread();
         thread.start();
         thread.setITaskCallback(new SendThread.ITaskCallback() {
             @Override
             public void onTasking(int num) {
                 try {
-                    if (iServicecallBack != null) {
-                        iServicecallBack.notifyNum(num);
+//                    if (iServicecallBack != null) {
+//                        iServicecallBack.notifyNum(num);
+//                    }
+                    for (IServiceCallback iServiceCallback : iServicecallBacks){
+                        iServiceCallback.notifyNum(num);
                     }
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.e(TAG, "onStartCommand");
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -50,12 +64,14 @@ public class RemoteService extends Service {
 
         @Override
         public void registerListener(IServiceCallback callBack) throws RemoteException {
-            iServicecallBack = callBack;
+//            iServicecallBack = callBack;
+            iServicecallBacks.add(callBack);
         }
 
         @Override
         public void unRegisterListener(IServiceCallback callBack) throws RemoteException {
-            iServicecallBack = null;
+//            iServicecallBack = null;
+            iServicecallBacks.clear();
         }
 
     };
