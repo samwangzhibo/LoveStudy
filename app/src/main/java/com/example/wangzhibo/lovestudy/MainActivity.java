@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -33,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     IServiceCallback callback2;
     IRemoteService iRemoteService2;
 
+    boolean isThisConnection = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,30 +46,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
 
         commuteWithRemoteServiceBtn2 = findViewById(R.id.btn_commute_with_remote_service_2);
         commuteWithRemoteServiceBtn2.setOnClickListener(this);
-    }
-
-    private void initRemoteServiceConnection() {
-        remoteServiceConnection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                iRemoteService = IRemoteService.Stub.asInterface(service);
-//                try {
-//                    iRemoteService.registerListener(callback);
-//                } catch (RemoteException e) {
-//                    e.printStackTrace();
-//                }
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-//                try {
-//                    iRemoteService.unRegisterListener(callback);
-//                } catch (RemoteException e) {
-//                    e.printStackTrace();
-//                }
-                iRemoteService = null;
-            }
-        };
 
         callback = new IServiceCallback.Stub() {
             @Override
@@ -82,6 +58,38 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 });
             }
         };
+    }
+
+    private void initRemoteServiceConnection() {
+        remoteServiceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                onRemoteServiceConnected(name, service);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                onRemoteServiceDisconnected(name);
+            }
+        };
+    }
+
+    private void onRemoteServiceDisconnected(ComponentName name) {
+        try {
+            iRemoteService.unRegisterListener(callback);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        iRemoteService = null;
+    }
+
+    private void onRemoteServiceConnected(ComponentName name, IBinder service) {
+        iRemoteService = IRemoteService.Stub.asInterface(service);
+        try {
+            iRemoteService.registerListener(callback);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initRemoteServiceConnection2() {
@@ -146,7 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                     //开启service
                     initServiceConnnection();
                     Intent intent = new Intent(MainActivity.this, MathService.class);
-                    bindService(intent, this, BIND_AUTO_CREATE);
+                    bindService(intent, serviceConnection, BIND_AUTO_CREATE);
                     commuteWithServiceBtn.setText("连接成功，点击获取service数据");
                 } else {
                     commuteWithServiceBtn.setText("获取service数据 : " + mathService.getNum());
@@ -156,9 +164,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
             case R.id.btn_commute_with_remote_service:
                 if (iRemoteService == null) {
                     //开启service
-                    initRemoteServiceConnection();
+//                    initRemoteServiceConnection();
+                    isThisConnection = true;
                     Intent intent = new Intent(MainActivity.this, RemoteService.class);
-                    bindService(intent, remoteServiceConnection, BIND_AUTO_CREATE);
+                    bindService(intent, this, BIND_AUTO_CREATE);
                     commuteWithRemoteServiceBtn.setText("连接成功，点击获取跨进程service数据");
                 } else {
                     try {
@@ -192,6 +201,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         if (remoteServiceConnection2 != null) {
             unbindService(remoteServiceConnection2);
         }
+        if (isThisConnection) {
+            unbindService(this);
+        }
         if (mathService != null){
             mathService.release();
         }
@@ -199,13 +211,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-//        iRemoteService = IRemoteService.Stub.asInterface(service);
-        mathService = ((MathService.MathBinder) service).getService();
+        onRemoteServiceConnected(name, service);
+
+//        mathService = ((MathService.MathBinder) service).getService();
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-//        iRemoteService = null;
-        mathService = null;
+        onRemoteServiceDisconnected(name);
+
+//        mathService = null;
     }
 }
