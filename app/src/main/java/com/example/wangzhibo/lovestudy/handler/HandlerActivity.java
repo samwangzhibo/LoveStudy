@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.wangzhibo.lovestudy.R;
@@ -15,6 +16,7 @@ import com.example.wangzhibo.lovestudy.R;
  *   create by wangzhibo666
  */
 public class HandlerActivity extends Activity {
+    private static final String TAG = "HandlerActivity";
     private static final int WHAT_MODIFY_TV = 100;
     TextView tvReciver;
     SendThread sendThread;
@@ -39,6 +41,12 @@ public class HandlerActivity extends Activity {
         //开启一个子线程，一直朝主线程发送数据
         sendThread = new SendThread();
         sendThread.start();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        Log.e(TAG, tvReciver.getMeasuredWidth()+"");
     }
 
     @Override

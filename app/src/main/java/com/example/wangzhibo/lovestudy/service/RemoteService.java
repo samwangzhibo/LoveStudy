@@ -8,6 +8,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+/**
+ * 最简单的Activity、Service使用、通信指南二(进程间通信)(附github源码)
+ * https://blog.csdn.net/wangzhibo666/article/details/86611912
+ */
 public class RemoteService extends Service {
     private static final String TAG = "RemoteService";
     SendThread thread;
@@ -49,6 +53,7 @@ public class RemoteService extends Service {
     public IBinder onBind(Intent intent) {
         return remoteService;
     }
+
     IRemoteService.Stub remoteService = new IRemoteService.Stub() {
         @Override
         public int getNum() throws RemoteException {

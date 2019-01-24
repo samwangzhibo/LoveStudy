@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+/**
+ * 最简单的Activity、Service使用、通信指南一(进程内通信)(附github源码)
+ * https://blog.csdn.net/wangzhibo666/article/details/86606603
+ */
 public class MathService extends Service {
     SendThread thread;
     public MathService() {
