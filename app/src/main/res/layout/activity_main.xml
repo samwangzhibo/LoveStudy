@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_ll"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -33,4 +34,10 @@
         android:layout_height="wrap_content"
         android:text="点击连接跨进程service(服务器自动吐数据)"
         />
-</LinearLayout>
+    <com.example.wangzhibo.lovestudy.touchevent.DispatchButton
+        android:id="@+id/btn_click_ontouch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击我的时候，不影响外层viewgroup哦"
+        />
+</com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>

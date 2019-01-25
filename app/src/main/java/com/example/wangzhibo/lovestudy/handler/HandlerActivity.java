@@ -37,6 +37,7 @@ public class HandlerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler);
+        Log.e(TAG, TAG + " onCreate");
         tvReciver = findViewById(R.id.tv_receiver);
         //开启一个子线程，一直朝主线程发送数据
         sendThread = new SendThread();
@@ -46,16 +47,31 @@ public class HandlerActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.e(TAG, TAG + " onStart");
 //        Log.e(TAG, tvReciver.getMeasuredWidth()+"");
     }
 
     @Override
     protected void onResume() {
+        Log.e(TAG, TAG + " onResume");
         super.onResume();
     }
 
     @Override
+    protected void onPause() {
+        Log.e(TAG, TAG + " onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.e(TAG, TAG + " onStop");
+        super.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
+        Log.e(TAG, TAG + " onDestroy");
         super.onDestroy();
         //退出时候切记 关闭线程 回收资源 !!!!
         sendThread.setEnd(true);

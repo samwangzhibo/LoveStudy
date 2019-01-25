@@ -7,8 +7,12 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.wangzhibo.lovestudy.handler.HandlerActivity;
 import com.example.wangzhibo.lovestudy.service.IRemoteService;
@@ -33,10 +37,17 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     IRemoteService iRemoteService2;
 
     boolean isThisConnection = false;
+
+    /**
+     * 实现点击按钮的时候，还能触发背景的点击
+     */
+    Button testOntouchBtn;
+    LinearLayout mainLl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.e(TAG, TAG + " onCreate");
         findViewById(R.id.btn_goto_handler_act).setOnClickListener(this);
         commuteWithServiceBtn = findViewById(R.id.btn_commute_with_service);
         commuteWithServiceBtn.setOnClickListener(this);
@@ -58,6 +69,23 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 });
             }
         };
+
+        testOntouchBtn = findViewById(R.id.btn_click_ontouch);
+        testOntouchBtn.setOnClickListener(this);
+        mainLl = findViewById(R.id.main_ll);
+        mainLl.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        Log.e(TAG, TAG + " onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.e(TAG, TAG + " onResume");
+        super.onResume();
     }
 
     private void initRemoteServiceConnection() {
@@ -186,11 +214,30 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                     commuteWithRemoteServiceBtn2.setText("连接成功，点击获取跨进程service数据");
                 }
                 break;
+            case R.id.btn_click_ontouch:
+                Toast.makeText(MainActivity.this, "click btn", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_ll:
+                Toast.makeText(MainActivity.this, "click main bg", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
     @Override
+    protected void onPause() {
+        Log.e(TAG, TAG + " onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.e(TAG, TAG + " onStop");
+        super.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
+        Log.e(TAG, TAG + " onDestroy");
         super.onDestroy();
         if (remoteServiceConnection != null) {
             unbindService(remoteServiceConnection);
