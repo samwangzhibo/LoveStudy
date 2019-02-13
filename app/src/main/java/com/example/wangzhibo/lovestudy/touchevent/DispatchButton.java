@@ -32,8 +32,18 @@ public class DispatchButton extends Button {
     public boolean onTouchEvent(MotionEvent ev) {
         Log.e(TAG, "  onTouchEvent : " + ev.getAction());
         boolean superResult = super.onTouchEvent(ev);
-        Log.e(TAG, "  onTouchEvent result : " + false);
-        return false;
+//        switch (ev.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                Log.e(TAG, "  onTouchEvent result : " + false);
+//                return false;
+////                break;
+//            case MotionEvent.ACTION_UP:
+//                Log.e(TAG, "  onTouchEvent result : " + true);
+//                return true;
+////                break;
+//        }
+        Log.e(TAG, "  onTouchEvent result : " + superResult);
+        return superResult;
     }
 
     @Override

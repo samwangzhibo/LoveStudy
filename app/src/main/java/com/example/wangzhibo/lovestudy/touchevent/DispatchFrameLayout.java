@@ -4,19 +4,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 /**
  * Created by samwangzhibo on 2019/1/25.
  */
 
-public class DispatchLinearLayout extends LinearLayout {
-    private static final String TAG = "DispatchLinearLayout";
-    public DispatchLinearLayout(Context context) {
+public class DispatchFrameLayout extends FrameLayout {
+    private static final String TAG = "DispatchFrameLayout";
+    public DispatchFrameLayout(Context context) {
         super(context);
     }
 
-    public DispatchLinearLayout(Context context, AttributeSet attrs) {
+    public DispatchFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -25,7 +25,7 @@ public class DispatchLinearLayout extends LinearLayout {
         Log.e(TAG, " dispatchTouchEvent : " + ev.getAction());
         boolean superResult = super.dispatchTouchEvent(ev);
         Log.e(TAG, " dispatchTouchEvent result: " + superResult);
-        return true;
+        return superResult;
     }
 
     @Override

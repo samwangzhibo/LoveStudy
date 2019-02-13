@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.wangzhibo.lovestudy.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout
     android:id="@+id/main_ll"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.wangzhibo.lovestudy.MainActivity">
+    android:orientation="vertical"
+    >
 
     <Button
         android:id="@+id/btn_goto_handler_act"
@@ -41,3 +47,4 @@
         android:text="点击我的时候，不影响外层viewgroup哦"
         />
 </com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>
+</com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout>

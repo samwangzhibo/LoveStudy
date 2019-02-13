@@ -51,6 +51,7 @@ public class RemoteService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.e(TAG, "onBind Thread " + Thread.currentThread().getName());
         return remoteService;
     }
 

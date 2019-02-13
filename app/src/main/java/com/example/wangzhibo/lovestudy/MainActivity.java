@@ -103,21 +103,21 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     }
 
     private void onRemoteServiceDisconnected(ComponentName name) {
-        try {
-            iRemoteService.unRegisterListener(callback);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            iRemoteService.unRegisterListener(callback);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
         iRemoteService = null;
     }
 
     private void onRemoteServiceConnected(ComponentName name, IBinder service) {
         iRemoteService = IRemoteService.Stub.asInterface(service);
-        try {
-            iRemoteService.registerListener(callback);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            iRemoteService.registerListener(callback);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void initRemoteServiceConnection2() {
@@ -147,6 +147,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
 
             @Override
             public void notifyNum(final int num) throws RemoteException {
+                //这里是由binder线程调用的
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -215,6 +216,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 }
                 break;
             case R.id.btn_click_ontouch:
+                mainLl.performClick();
                 Toast.makeText(MainActivity.this, "click btn", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main_ll:
