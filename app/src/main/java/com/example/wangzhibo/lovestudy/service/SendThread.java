@@ -1,6 +1,8 @@
 package com.example.wangzhibo.lovestudy.service;
 
 /**
+ * AIDL 跨进程Activity、Service的观察者模式实现与源码解读(附github源码)
+ * https://blog.csdn.net/wangzhibo666/article/details/86667934
  * Created by samwangzhibo on 2019/1/23.
  */
 

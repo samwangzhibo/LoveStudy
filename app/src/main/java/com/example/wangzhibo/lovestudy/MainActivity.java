@@ -58,6 +58,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         commuteWithRemoteServiceBtn2 = findViewById(R.id.btn_commute_with_remote_service_2);
         commuteWithRemoteServiceBtn2.setOnClickListener(this);
 
+        findViewById(R.id.btn_eventbus).setOnClickListener(this);
+
         callback = new IServiceCallback.Stub() {
             @Override
             public void notifyNum(final int num) throws RemoteException {
@@ -175,6 +177,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_eventbus:
+
+                break;
             case R.id.btn_goto_handler_act:
                 startActivity(new Intent(MainActivity.this, HandlerActivity.class));
                 break;
@@ -216,7 +221,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 }
                 break;
             case R.id.btn_click_ontouch:
-                mainLl.performClick();
+//                mainLl.performClick();
                 Toast.makeText(MainActivity.this, "click btn", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main_ll:
@@ -270,5 +275,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         onRemoteServiceDisconnected(name);
 
 //        mathService = null;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 }

@@ -46,5 +46,11 @@
         android:layout_height="wrap_content"
         android:text="点击我的时候，不影响外层viewgroup哦"
         />
+    <Button
+        android:id="@+id/btn_eventbus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventBus的使用"
+        />
 </com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>
 </com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout>
