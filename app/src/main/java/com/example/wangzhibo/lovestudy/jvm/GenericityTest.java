@@ -22,6 +22,8 @@ public class GenericityTest {
 //        List<? super Number> numbers = new ArrayList<Integer>();
         // Number是Integer的父类 所以是上界
         List<? super Integer> numbers = new ArrayList<Number>();
+        //报错
+//        numbers.add(1.1);
 
         //报错
 //        List<Object> objects = new ArrayList<String>();

@@ -22,6 +22,8 @@ public class OuterClass {
         //外部类不能访问同包以下的private static方法
 //        InnerClassTest.e();
 
+        new InnerClassTest.StaticInnerClass();
+
         //不能访问同一包下的内部类
 //        new InnerClassTest.InnerClass();
         //能访问同一包下的静态内部类

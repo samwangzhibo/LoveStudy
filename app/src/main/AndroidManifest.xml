@@ -21,13 +21,14 @@
         <service
             android:name=".service.MathService"
             android:enabled="true"
-            android:exported="true"
-            />
+            android:exported="true" />
         <service
             android:name=".service.RemoteService"
             android:enabled="true"
-            android:process="wzb.remote"
-            android:exported="true"/>
+            android:exported="true"
+            android:process="wzb.remote" />
+
+        <activity android:name=".opensourseproject.retrofit.OpenSourseActivity"></activity>
     </application>
 
 </manifest>

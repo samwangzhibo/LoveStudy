@@ -59,7 +59,7 @@ public class InnerClassTest {
         }
     }
 
-    static class StaticInnerClass {
+    public static class StaticInnerClass {
 
         private void innerMethod() {
             //non-static method c() cannot be refenrenced from a static context
