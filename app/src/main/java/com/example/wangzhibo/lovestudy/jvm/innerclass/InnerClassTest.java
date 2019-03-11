@@ -25,6 +25,7 @@ public class InnerClassTest {
     private void a() {
         new InnerClass().innerMethod();
         new StaticInnerClass().innerMethod();
+        new InnerClassTest().new InnerClass();
     }
 
     void b() {
@@ -44,9 +45,9 @@ public class InnerClassTest {
     }
 
     /**
-     * 内部类不能有静态的方法和成员变量。
+     * 成员内部类不能有静态的方法和成员变量。
      */
-    private class InnerClass {
+    public class InnerClass {
 //        private static int staticNum = 1;
 
 //        public static void innerA(){
@@ -59,14 +60,29 @@ public class InnerClassTest {
         }
     }
 
-    public static class StaticInnerClass {
+    /**
+     * 静态内部类 只能访问外部类的静态方法和成员
+     *
+     *
+     */
+    static class StaticInnerClass {
 
         private void innerMethod() {
             //non-static method c() cannot be refenrenced from a static context
+            //1.不能访问非静态私有方法
 //            c();
+
+            //2.不能访问非静态公有方法
+//            d();
+
+            //3.能访问外部类的私有静态方法
             e();
+
+            //成员 4.能够访问私有静态成员
             staticNum = 2;
+
             //non-static field aNum cannot be refenrenced from a static context
+            //成员 5.不能访问私有非静态成员
 //            aNum = 2;
         }
     }
