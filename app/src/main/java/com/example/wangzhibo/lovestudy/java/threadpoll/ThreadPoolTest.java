@@ -3,6 +3,7 @@ package com.example.wangzhibo.lovestudy.java.threadpoll;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 线程池测试
@@ -54,8 +55,8 @@ public class ThreadPoolTest {
             };
 
             scheduledThreadPool.execute(runnable);
-//        scheduledThreadPool.schedule(runnable, 1, TimeUnit.SECONDS);
-//            scheduledThreadPool.scheduleAtFixedRate(runnable, 1, 1, TimeUnit.SECONDS);
+        scheduledThreadPool.schedule(runnable, 1, TimeUnit.SECONDS); //1s之后执行
+            scheduledThreadPool.scheduleAtFixedRate(runnable, 1, 1, TimeUnit.SECONDS); //1s之后执行，每隔1s执行一次
         }
 
 //        scheduledThreadPool.shutdown();

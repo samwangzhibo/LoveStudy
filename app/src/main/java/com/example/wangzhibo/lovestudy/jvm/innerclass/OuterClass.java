@@ -6,6 +6,8 @@ package com.example.wangzhibo.lovestudy.jvm.innerclass;
  * 同一包下面 不能访问同包的其他类的私有对象
  * 同一包下面 能访问同包的其他类的私有对象
  * 不能访问其他类的内部类
+ * 可以通过构建外围类再创建它的内部类
+ *
  * 可以访问其他类的静态内部类
  *
  * Created by samwangzhibo on 2019/1/24.
@@ -23,8 +25,10 @@ public class OuterClass {
 //        InnerClassTest.e();
 
 
-        //不能访问同一包下的内部类
+        //不能直接访问同一包下的内部类
 //        new InnerClassTest.InnerClass();
+        //可以通过构建外围类再创建它的内部类
+        new InnerClassTest().new InnerClass();
 
         //能访问同一包下的静态内部类
         new InnerClassTest.StaticInnerClass();
