@@ -1,4 +1,4 @@
-package com.example.wangzhibo.lovestudy.java.thread;
+package com.example.wangzhibo.lovestudy.java.concurrent.thread;
 
 /**
  * 线程测试

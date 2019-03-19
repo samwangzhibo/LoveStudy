@@ -1,7 +1,7 @@
 package com.example.wangzhibo.lovestudy.codeinterview;
 
 /**
- * 链表
+ * 反转链表
  * Created by samwangzhibo on 2019/1/20.
  */
 

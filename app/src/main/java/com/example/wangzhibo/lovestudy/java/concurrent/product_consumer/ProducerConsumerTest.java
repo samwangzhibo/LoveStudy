@@ -1,4 +1,4 @@
-package com.example.wangzhibo.lovestudy.java.product_consumer;
+package com.example.wangzhibo.lovestudy.java.concurrent.product_consumer;
 
 /**
  * Created by samwangzhibo on 2019/3/11.

@@ -42,11 +42,13 @@ public class Parcel5 {
         return new PDestionation(str);
     }
 
-    private void noNameInnerClass(){
+    private void noNameInnerClass(final String aaa){
+        //不能被修改
+//        aaa = "aa";
         new Destionation() {
             @Override
             public void destionate() {
-                System.out.println(numOutter);
+                System.out.println(numOutter + aaa);
 
             }
         };
@@ -55,5 +57,10 @@ public class Parcel5 {
     public static void main(String[] args) {
         Parcel5 parcel5 = new Parcel5();
         Destionation d = parcel5.destionation("chenssy");
+        String b = "bbbb";
+        String c = "bbbb";
+        parcel5.noNameInnerClass(b);
+        parcel5.noNameInnerClass(c);
+        b = "ddd";
     }
 }
