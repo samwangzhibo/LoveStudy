@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.wangzhibo.lovestudy.handler.HandlerActivity;
@@ -19,6 +18,7 @@ import com.example.wangzhibo.lovestudy.service.IRemoteService;
 import com.example.wangzhibo.lovestudy.service.IServiceCallback;
 import com.example.wangzhibo.lovestudy.service.MathService;
 import com.example.wangzhibo.lovestudy.service.RemoteService;
+import com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout;
 
 public class MainActivity extends Activity implements View.OnClickListener, ServiceConnection {
     private static final String TAG = "MainActivity";
@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
      * 实现点击按钮的时候，还能触发背景的点击
      */
     Button testOntouchBtn;
-    LinearLayout mainLl;
+    DispatchLinearLayout mainLl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         commuteWithRemoteServiceBtn2 = findViewById(R.id.btn_commute_with_remote_service_2);
         commuteWithRemoteServiceBtn2.setOnClickListener(this);
 
-        findViewById(R.id.btn_eventbus).setOnClickListener(this);
+        findViewById(R.id.btn_test_scroll).setOnClickListener(this);
+        findViewById(R.id.btn_test_scroll_reset).setOnClickListener(this);
 
         callback = new IServiceCallback.Stub() {
             @Override
@@ -177,8 +178,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_eventbus:
-
+            case R.id.btn_test_scroll:
+                mainLl.testScroll();
+                break;
+            case R.id.btn_test_scroll_reset:
+                mainLl.reset();
                 break;
             case R.id.btn_goto_handler_act:
                 startActivity(new Intent(MainActivity.this, HandlerActivity.class));
