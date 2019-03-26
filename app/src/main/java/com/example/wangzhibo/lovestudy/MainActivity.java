@@ -13,12 +13,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.wangzhibo.lovestudy.animation.AnimationUtil;
 import com.example.wangzhibo.lovestudy.handler.HandlerActivity;
 import com.example.wangzhibo.lovestudy.service.IRemoteService;
 import com.example.wangzhibo.lovestudy.service.IServiceCallback;
 import com.example.wangzhibo.lovestudy.service.MathService;
 import com.example.wangzhibo.lovestudy.service.RemoteService;
 import com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 public class MainActivity extends Activity implements View.OnClickListener, ServiceConnection {
     private static final String TAG = "MainActivity";
@@ -60,6 +63,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
 
         findViewById(R.id.btn_test_scroll).setOnClickListener(this);
         findViewById(R.id.btn_test_scroll_reset).setOnClickListener(this);
+        initAnimViews();
 
         callback = new IServiceCallback.Stub() {
             @Override
@@ -77,6 +81,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         testOntouchBtn.setOnClickListener(this);
         mainLl = findViewById(R.id.main_ll);
         mainLl.setOnClickListener(this);
+    }
+
+    AnimationUtil animationUtil;
+    private void initAnimViews() {
+        findViewById(R.id.btn_tween_anim).setOnClickListener(this);
+        animationUtil = new AnimationUtil(findViewById(R.id.ll_anim));
     }
 
     @Override
@@ -178,6 +188,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_tween_anim:
+                animationUtil.startAnim();
+                break;
             case R.id.btn_test_scroll:
                 mainLl.testScroll();
                 break;
@@ -244,6 +257,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     protected void onStop() {
         Log.e(TAG, TAG + " onStop");
         super.onStop();
+    }
+
+    @Subscribe
+    void onEvent(){
+
     }
 
     @Override

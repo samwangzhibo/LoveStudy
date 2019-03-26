@@ -88,8 +88,8 @@ public class DispatchLinearLayout extends LinearLayout {
 //        scroller.fling(0, 0, -100, -100,
 //                -1000, 300, -1000, 300);
 
-        overScroller.fling(0, 0, -1000, -1000,
-                -1000, -300, -1000, -300, 1, 1);
+        overScroller.fling(0, 0, -3000, -3000,
+                100, 900, 100, 900, 0, 0);
 
         invalidate();
     }

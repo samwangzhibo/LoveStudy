@@ -47,6 +47,7 @@
         android:text="点击我的时候，不影响外层viewgroup哦"
         />
     <LinearLayout
+        android:id="@+id/ll_anim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -62,6 +63,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="重置"
+            />
+        <Button
+            android:id="@+id/btn_tween_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="补间动画"
             />
     </LinearLayout>
 
