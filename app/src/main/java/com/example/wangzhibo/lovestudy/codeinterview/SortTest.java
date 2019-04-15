@@ -18,6 +18,10 @@ public class SortTest {
         }
     }
 
+    /**
+     * 1.冒泡
+     * @param nums
+     */
     private static void bobbleSort(int[] nums) {
         for(int i=0; i<nums.length-1; i++){
             for (int j=0; j<nums.length-1-i; j++){
@@ -31,6 +35,12 @@ public class SortTest {
         }
     }
 
+    /**
+     * 2.快排
+     * @param nums
+     * @param start
+     * @param end
+     */
     private static void quickSort(int[] nums, int start, int end) {
         if (start >= end) {
             return;
@@ -40,6 +50,14 @@ public class SortTest {
         quickSort(nums, index + 1, end);
     }
 
+    /**
+     * 2.1 快排
+     * 找到 nums 第一个元素位于 nums中的排序位置
+     * @param nums
+     * @param start
+     * @param end
+     * @return
+     */
     private static int findIndex(int[] nums, int start, int end) {
         int num = nums[start];
         while (start < end){

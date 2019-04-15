@@ -1,4 +1,4 @@
-package com.example.wangzhibo.lovestudy.java.concurrent.threadpoll;
+package com.example.wangzhibo.lovestudy.java.concurrent.threadpool;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

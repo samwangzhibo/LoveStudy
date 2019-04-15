@@ -61,15 +61,15 @@ public class DispatchLinearLayout extends LinearLayout {
     @Override
     public void computeScroll() {
        Log.e(TAG, "computeScroll getScrollY : " + getScrollY());
-//       if (scroller.computeScrollOffset()){
-//           scrollTo(scroller.getCurrX(), scroller.getCurrY());
-//           postInvalidate();
-//       }
+       if (scroller.computeScrollOffset()){
+           scrollTo(scroller.getCurrX(), scroller.getCurrY());
+           postInvalidate();
+       }
 
-        if (overScroller.computeScrollOffset()){
-            scrollTo(overScroller.getCurrX(), overScroller.getCurrY());
+//        if (overScroller.computeScrollOffset()){
+//            scrollTo(overScroller.getCurrX(), overScroller.getCurrY());
 //           postInvalidate();
-        }
+//        }
 
     }
 

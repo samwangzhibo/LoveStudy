@@ -7,6 +7,7 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.Transformation;
 
 /**
+ * 3D旋转动画  使用{@link Camera}
  * Created by samwangzhibo on 2019/3/22.
  */
 

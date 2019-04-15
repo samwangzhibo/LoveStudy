@@ -7,8 +7,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * 重入锁测试
  *
  * ReentrantLocak特性（对比synchronized）
- * 尝试获得锁
- * 获取到锁的线程能够响应中断
+ * 1. 获取到锁的线程能够响应中断 限时等待
+ * 2. 公平锁
+ * 3. 多个condition
  *
  * Created by samwangzhibo on 2019/3/19.
  */

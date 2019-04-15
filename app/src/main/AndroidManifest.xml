@@ -28,7 +28,8 @@
             android:exported="true"
             android:process="wzb.remote" />
 
-        <activity android:name=".opensourseproject.retrofit.OpenSourseActivity"></activity>
+        <activity android:name=".opensourseproject.retrofit.OpenSourseActivity" />
+        <activity android:name=".opensourseproject.eventbus.EventBusActivity"></activity>
     </application>
 
 </manifest>

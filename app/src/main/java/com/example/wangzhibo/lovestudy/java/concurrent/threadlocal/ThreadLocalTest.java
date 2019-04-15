@@ -1,6 +1,8 @@
-package com.example.wangzhibo.lovestudy.java.concurrent.thread.threadlocal;
+package com.example.wangzhibo.lovestudy.java.concurrent.threadlocal;
 
 /**
+ * ThreadLocal 使用
+ * 原理：线程里面有一个threadLocals map
  * Created by samwangzhibo on 2019/3/11.
  */
 

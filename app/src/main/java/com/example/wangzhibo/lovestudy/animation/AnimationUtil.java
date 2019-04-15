@@ -32,11 +32,12 @@ public class AnimationUtil {
 //        beginTweenAnim();
 
         beginCustomTweenAnim();
+
 //        beginPropertyAnim();
     }
 
     /**
-     * 开启帧动画
+     * 1.开启帧动画
      */
     private void beginFrameAnim() {
         //和上述xml定义方法的效果相同
@@ -58,7 +59,7 @@ public class AnimationUtil {
     }
 
     /**
-     * 开启Tween动画
+     * 2. 开启Tween动画
      */
     private void beginTweenAnim() {
         AnimationSet animationSet = new AnimationSet(false);
@@ -82,7 +83,7 @@ public class AnimationUtil {
     }
 
     /**
-     * 开启自定义补间动画  通过插值器时间和Matrix
+     * 2.1 开启自定义补间动画  通过插值器时间和Matrix
      */
     private void beginCustomTweenAnim(){
         Animation customAnimation = new CustomAnimation();
