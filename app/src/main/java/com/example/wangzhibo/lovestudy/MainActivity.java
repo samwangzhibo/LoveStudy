@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.wangzhibo.lovestudy.animation.AnimationUtil;
 import com.example.wangzhibo.lovestudy.handler.HandlerActivity;
+import com.example.wangzhibo.lovestudy.opensourseproject.eventbus.EventBusActivity;
 import com.example.wangzhibo.lovestudy.service.IRemoteService;
 import com.example.wangzhibo.lovestudy.service.IServiceCallback;
 import com.example.wangzhibo.lovestudy.service.MathService;
@@ -26,7 +27,7 @@ import org.greenrobot.eventbus.Subscribe;
 public class MainActivity extends Activity implements View.OnClickListener, ServiceConnection {
     private static final String TAG = "MainActivity";
     MathService mathService;
-    Button commuteWithServiceBtn;
+    Button commuteWithServiceBtn, jumpEventBusBtn;
     ServiceConnection serviceConnection;
 
     IRemoteService iRemoteService;
@@ -61,6 +62,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
         commuteWithRemoteServiceBtn2 = findViewById(R.id.btn_commute_with_remote_service_2);
         commuteWithRemoteServiceBtn2.setOnClickListener(this);
 
+        jumpEventBusBtn = findViewById(R.id.btn_jump_eventbus);
+        jumpEventBusBtn.setOnClickListener(this);
+
         findViewById(R.id.btn_test_scroll).setOnClickListener(this);
         findViewById(R.id.btn_test_scroll_reset).setOnClickListener(this);
         initAnimViews();
@@ -86,6 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     AnimationUtil animationUtil;
     private void initAnimViews() {
         findViewById(R.id.btn_tween_anim).setOnClickListener(this);
+        findViewById(R.id.btn_proper_anim).setOnClickListener(this);
         animationUtil = new AnimationUtil(findViewById(R.id.ll_anim));
     }
 
@@ -191,6 +196,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
             case R.id.btn_tween_anim:
                 animationUtil.startAnim();
                 break;
+            case R.id.btn_proper_anim:
+                animationUtil.beginPropertyAnim();
+                break;
             case R.id.btn_test_scroll:
                 mainLl.testScroll();
                 break;
@@ -243,6 +251,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
                 break;
             case R.id.main_ll:
                 Toast.makeText(MainActivity.this, "click main bg", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_jump_eventbus:
+                Intent intent = new Intent(this, EventBusActivity.class);
+                startActivity(intent);
                 break;
         }
     }

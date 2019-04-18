@@ -1,6 +1,6 @@
 package com.example.wangzhibo.lovestudy.opensourseproject.eventbus;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +10,7 @@ import com.example.wangzhibo.lovestudy.R;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class EventBusActivity extends AppCompatActivity implements View.OnClickListener {
+public class EventBusActivity extends Activity implements View.OnClickListener {
     Button btnEventBus, btnSw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

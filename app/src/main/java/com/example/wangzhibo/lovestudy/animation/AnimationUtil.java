@@ -1,5 +1,6 @@
 package com.example.wangzhibo.lovestudy.animation;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -29,9 +30,9 @@ public class AnimationUtil {
     public void startAnim() {
 //        beginFrameAnim();
 
-//        beginTweenAnim();
+        beginTweenAnim();
 
-        beginCustomTweenAnim();
+//        beginCustomTweenAnim();
 
 //        beginPropertyAnim();
     }
@@ -52,10 +53,6 @@ public class AnimationUtil {
         ad.setOneShot(false);//3.设置是否执行一次
         handleView.setBackground(ad);//4.将帧动画作为view背景
         ad.start();//5.播放动画
-    }
-
-    private void beginPropertyAnim() {
-
     }
 
     /**
@@ -84,6 +81,8 @@ public class AnimationUtil {
 
     /**
      * 2.1 开启自定义补间动画  通过插值器时间和Matrix
+     *
+     *  Viewe.Animation mCurrentAnimation
      */
     private void beginCustomTweenAnim(){
         Animation customAnimation = new CustomAnimation();
@@ -97,4 +96,14 @@ public class AnimationUtil {
 
         handleView.startAnimation(thirdDRotationAnim);
     }
+
+    /**
+     * 3. 属性动画
+     * VSync同步信号调用回调
+     */
+    public void beginPropertyAnim() {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(handleView, "translationX", 0, 300);
+        objectAnimator.start();
+    }
+
 }
