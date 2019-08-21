@@ -2,6 +2,8 @@ package com.example.wangzhibo.lovestudy.arithmetic.array;
 
 import java.util.LinkedList;
 
+import com.example.wangzhibo.lovestudy.arithmetic.tree.TreeNode;
+
 /**
  * Created by samwangzhibo on 2019/4/7.
  */
@@ -58,21 +60,24 @@ public class PingduoduoTest {
             //队列
             LinkedList<TreeNode> queue = new LinkedList<>();
             queue.offer(root);
+            // 1.定义变量
             int depth = 0;
-            while (!queue.isEmpty()){
 
+            // 2.递进条件
+            while (!queue.isEmpty()){
+              int width = queue.size();
+              for(int i=0; i< width; i++){
+                TreeNode node = queue.peek();
+                if(node.left != null){
+                  queue.offer(node.left);
+                }
+                if(node.right != null){
+                  queue.offer(node.right);
+                }
+              }
+              depth++;
             }
             return depth;
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int x) {
-            val = x;
         }
     }
 
