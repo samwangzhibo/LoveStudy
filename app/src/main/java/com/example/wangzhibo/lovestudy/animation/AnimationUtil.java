@@ -1,15 +1,22 @@
 package com.example.wangzhibo.lovestudy.animation;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
+
+import com.example.wangzhibo.lovestudy.R;
 
 /**
  * 动画测试类
@@ -27,17 +34,46 @@ public class AnimationUtil {
     }
 
 
-    public void startAnim() {
+    public void startAnim(View v) {
 //        beginFrameAnim();
 
-        beginTweenAnim();
+//        beginTweenAnim();
 
 //        beginCustomTweenAnim();
 
 //        beginPropertyAnim();
+
+//      scaleFromRightBottomCorner(v);
+      changeBigFromRightBottomCorner(v);
     }
 
-    /**
+  private void changeBigFromRightBottomCorner(View view) {
+
+    AnimatorSet animatorSet = new AnimatorSet();
+
+    // mask放大
+    ValueAnimator maskWidthScaleAnimator = ObjectAnimator.ofFloat(view.getWidth(), 2 * view.getWidth());
+    maskWidthScaleAnimator.setDuration(5000);
+    ValueAnimator maskHeightScaleAnimator = ObjectAnimator.ofFloat(view.getHeight(), 2 * view.getHeight());
+    maskHeightScaleAnimator.setDuration(5000);
+
+    maskWidthScaleAnimator.addUpdateListener(animation -> {
+      float width = (float) animation.getAnimatedValue();
+      view.getLayoutParams().width = (int) width;
+      view.requestLayout();
+    });
+    maskHeightScaleAnimator.addUpdateListener(animation -> {
+      float height = (float) animation.getAnimatedValue();
+      view.getLayoutParams().height = (int) height;
+      view.requestLayout();
+    });
+
+    animatorSet.setInterpolator(new LinearInterpolator());
+    animatorSet.playTogether(maskWidthScaleAnimator, maskHeightScaleAnimator);
+    animatorSet.start();
+  }
+
+  /**
      * 1.开启帧动画
      */
     private void beginFrameAnim() {
@@ -105,5 +141,32 @@ public class AnimationUtil {
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(handleView, "translationX", 0, 300);
         objectAnimator.start();
     }
+
+    public void scaleFromRightBottomCorner(View view){
+      view.setPivotX(view.getMeasuredWidth());
+      view.setPivotY(view.getMeasuredHeight());
+
+      AnimatorSet animatorSet = new AnimatorSet();
+
+      // mask放大
+      ValueAnimator maskWidthScaleAnimator = ObjectAnimator.ofFloat(1, 2);
+      maskWidthScaleAnimator.setDuration(2000);
+      ValueAnimator maskHeightScaleAnimator = ObjectAnimator.ofFloat(1, 2);
+      maskHeightScaleAnimator.setDuration(2000);
+      maskWidthScaleAnimator.addUpdateListener(animation -> {
+        float scaleX = (float) animation.getAnimatedValue();
+        view.setScaleX(scaleX);
+      });
+      maskHeightScaleAnimator.addUpdateListener(animation -> {
+        float scaleY = (float) animation.getAnimatedValue();
+        view.setScaleY(scaleY);
+      });
+
+      animatorSet.setInterpolator(new AccelerateInterpolator());
+      animatorSet.playTogether(maskWidthScaleAnimator, maskHeightScaleAnimator);
+      animatorSet.start();
+    }
+
+
 
 }

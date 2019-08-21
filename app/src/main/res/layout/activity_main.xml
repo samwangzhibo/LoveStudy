@@ -65,12 +65,6 @@
             android:text="重置"
             />
         <Button
-            android:id="@+id/btn_tween_anim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="补间动画"
-            />
-        <Button
             android:id="@+id/btn_proper_anim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,5 +77,23 @@
         android:layout_height="wrap_content"
         android:text="event bus"
         />
+      <Button
+        android:id="@+id/btn_jump_test_coordinatelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试协同布局"
+        />
 </com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>
+
+  <Button
+    android:id="@+id/btn_tween_anim"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_corner"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_gravity="right|bottom"
+    android:padding="5dp"
+    android:text="补间动画"
+    />
 </com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout>

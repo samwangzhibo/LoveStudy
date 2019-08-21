@@ -21,6 +21,7 @@ import com.example.wangzhibo.lovestudy.service.IServiceCallback;
 import com.example.wangzhibo.lovestudy.service.MathService;
 import com.example.wangzhibo.lovestudy.service.RemoteService;
 import com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout;
+import com.example.wangzhibo.lovestudy.view.coordinatelayout.ScrollingActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -67,6 +68,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
 
         findViewById(R.id.btn_test_scroll).setOnClickListener(this);
         findViewById(R.id.btn_test_scroll_reset).setOnClickListener(this);
+        findViewById(R.id.btn_jump_test_coordinatelayout).setOnClickListener(this);
         initAnimViews();
 
         callback = new IServiceCallback.Stub() {
@@ -193,8 +195,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Serv
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_jump_test_coordinatelayout:
+                startActivity(ScrollingActivity.createIntent(MainActivity.this));
+                break;
             case R.id.btn_tween_anim:
-                animationUtil.startAnim();
+                animationUtil.startAnim(v);
                 break;
             case R.id.btn_proper_anim:
                 animationUtil.beginPropertyAnim();
