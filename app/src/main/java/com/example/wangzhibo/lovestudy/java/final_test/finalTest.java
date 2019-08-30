@@ -14,6 +14,7 @@ public class finalTest {
     public static void main(String[] args) {
       // 备注
       // rebase2
+      // 备注 在test_rebase分支选择rebase current onto selected
         Entry entry = new Entry("aaa");
 //        modifyEntry(entry);
         modifyEntryFinal(entry);
