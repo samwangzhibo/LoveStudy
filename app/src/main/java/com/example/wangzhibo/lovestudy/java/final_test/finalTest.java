@@ -1,5 +1,8 @@
 package com.example.wangzhibo.lovestudy.java.final_test;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
 /**
  * 测试 final
  *
@@ -14,6 +17,14 @@ public class finalTest {
         Entry entry = new Entry("aaa");
 //        modifyEntry(entry);
         modifyEntryFinal(entry);
+        int i = 1;
+        new InvocationHandler(){
+
+          @Override
+          public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            return new Integer(i);
+          }
+        };
         System.out.println(entry.key);
     }
 
