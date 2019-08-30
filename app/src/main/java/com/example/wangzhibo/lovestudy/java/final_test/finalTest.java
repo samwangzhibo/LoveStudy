@@ -10,6 +10,7 @@ package com.example.wangzhibo.lovestudy.java.final_test;
 public class finalTest {
     public static void main(String[] args) {
       // 备注
+      // rebase2
         Entry entry = new Entry("aaa");
 //        modifyEntry(entry);
         modifyEntryFinal(entry);
