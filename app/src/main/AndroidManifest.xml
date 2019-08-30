@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.example.wangzhibo.lovestudy"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
       android:allowBackup="true"
@@ -9,6 +9,8 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+        <activity android:name=".view.recyclerview.TestRecyclerViewActivity">
+        </activity>
         <activity
           android:name=".view.coordinatelayout.ScrollingActivity"
           android:label="@string/title_activity_scrolling"
@@ -16,25 +18,25 @@
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".handler.HandlerActivity"/>
+        <activity android:name=".handler.HandlerActivity" />
+
+        <activity android:name=".opensourseproject.retrofit.OpenSourseActivity" />
+        <activity android:name=".opensourseproject.eventbus.EventBusActivity" />
 
         <service
           android:name=".service.MathService"
           android:enabled="true"
-          android:exported="true"/>
+          android:exported="true" />
         <service
           android:name=".service.RemoteService"
           android:enabled="true"
           android:exported="true"
-          android:process="wzb.remote"/>
-
-        <activity android:name=".opensourseproject.retrofit.OpenSourseActivity"/>
-        <activity android:name=".opensourseproject.eventbus.EventBusActivity"/>
+          android:process="wzb.remote" />
     </application>
 
 </manifest>

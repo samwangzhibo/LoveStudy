@@ -1,99 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.wangzhibo.lovestudy.MainActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.example.wangzhibo.lovestudy.MainActivity">
 
-<com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout
-    android:id="@+id/main_ll"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-    <Button
-        android:id="@+id/btn_goto_handler_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Handler、Looper、Message"
-        />
-
-    <Button
-        android:id="@+id/btn_commute_with_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点击连接service"
-        />
-
-    <Button
-        android:id="@+id/btn_commute_with_remote_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点击连接跨进程service"
-        />
-    <Button
-        android:id="@+id/btn_commute_with_remote_service_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点击连接跨进程service(服务器自动吐数据)"
-        />
-    <com.example.wangzhibo.lovestudy.touchevent.DispatchButton
-        android:id="@+id/btn_click_ontouch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点击我的时候，不影响外层viewgroup哦"
-        />
-    <LinearLayout
-        android:id="@+id/ll_anim"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/btn_test_scroll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="测试滚动"
-            />
-        <Button
-            android:id="@+id/btn_test_scroll_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="重置"
-            />
-        <Button
-            android:id="@+id/btn_proper_anim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="属性动画"
-            />
-    </LinearLayout>
-    <Button
-        android:id="@+id/btn_jump_eventbus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="event bus"
-        />
-      <Button
-        android:id="@+id/btn_jump_test_coordinatelayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试协同布局"
-        />
-</com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>
-
-  <Button
+<Button
     android:id="@+id/btn_tween_anim"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_corner"
+    android:layout_gravity="right|bottom"
     android:layout_marginBottom="5dp"
     android:layout_marginRight="5dp"
-    android:layout_gravity="right|bottom"
+    android:background="@drawable/background_corner"
     android:padding="5dp"
-    android:text="补间动画"
-    />
+    android:text="补间动画" />
+
+  <com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout
+  android:id="@+id/main_ll"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+    <Button
+      android:id="@+id/btn_goto_handler_act"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Handler、Looper、Message" />
+
+    <Button
+      android:id="@+id/btn_commute_with_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="点击连接service" />
+
+    <Button
+      android:id="@+id/btn_commute_with_remote_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="点击连接跨进程service" />
+    <Button
+      android:id="@+id/btn_commute_with_remote_service_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="点击连接跨进程service(服务器自动吐数据)" />
+    <Button
+      android:id="@+id/btn_jump_eventbus"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="event bus" />
+    <Button
+        android:id="@+id/btn_jump_test_coordinatelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试协同布局" />
+    <Button
+     android:id="@+id/btn_jump_test_recyclerview"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="测试recyclerView" />
+      <LinearLayout
+      android:id="@+id/ll_anim"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+        <Button
+          android:id="@+id/btn_test_scroll"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="测试滚动" />
+        <Button
+          android:id="@+id/btn_test_scroll_reset"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="重置" />
+        <Button
+          android:id="@+id/btn_proper_anim"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="属性动画" />
+    </LinearLayout>
+   <com.example.wangzhibo.lovestudy.touchevent.DispatchButton
+      android:id="@+id/btn_click_ontouch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="点击我的时候，不影响外层viewgroup哦" />
+
+</com.example.wangzhibo.lovestudy.touchevent.DispatchLinearLayout>
 </com.example.wangzhibo.lovestudy.touchevent.DispatchFrameLayout>
