@@ -5,9 +5,13 @@ package com.example.wangzhibo.lovestudy.java.extends_test;
  */
 
 public class Parent {
-    protected int i;
-    protected static int staticI = 1;
-    protected static int staticIB = 2;
+  // 静态
+  private static String staticI = "parent_static_i";
+  private static String staticIB = "parent_static_b";
+
+  // 非静态
+  protected String i = "parent_i";
+//  protected String b = "parent_b";
 
     protected static void staticMethod(){
         System.out.println(staticI);
@@ -18,6 +22,10 @@ public class Parent {
     }
 
     void methodA(){
+      System.out.println("parent i=" + i);
+    }
 
+    void pringtI(){
+      System.out.println("parent i = " + i);
     }
 }

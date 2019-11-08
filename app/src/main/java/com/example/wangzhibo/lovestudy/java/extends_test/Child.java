@@ -9,26 +9,25 @@ package com.example.wangzhibo.lovestudy.java.extends_test;
  */
 
 public class Child extends Parent {
-    protected static int staticI = 3;
-    protected static int staticIB = 4;
+  // 静态
+  private static String staticI = "child_static_i";
+  protected static String staticIB = "child_static_b";
 
-    @Override
-    void methodA() {
-        super.methodA();
-    }
+  // 非静态
+  protected String i = "child_i";
+  protected String b = "child_b";
 
-    protected static void staticMethod() {
-        System.out.println(staticI);
-    }
+  @Override
+  void methodA() {
+    System.out.println("Child i = " + i);
+  }
 
-    public static void main(String[] args) {
-        System.out.println("子类 父类同时具有静态方法和静态属性  调用父类的方法  是父类的值");
-        Parent.staticMethod();
-        System.out.println("子类 父类同时具有静态方法和静态属性  调用子类的方法  是子类的值");
-        staticMethod();
+  protected static void staticMethod() {
+    System.out.println(staticI);
+  }
 
-        System.out.println("父类(静态方法 静态属性) 子类(静态属性) 调用方法  是父类的");
-        staticMethodB();
+  void methodB(){
+    System.out.println("child i = " + i);
+  }
 
-    }
 }
